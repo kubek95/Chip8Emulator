@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Directory where the build will happen
+BUILD_DIR="build/run"
+
+# Check if the build directory exists; if not, create it
+if [ ! -d "$BUILD_DIR" ]; then
+  echo "Creating ${BUILD_DIR} directory..."
+  mkdir $BUILD_DIR
+fi
+
+# Navigate to the build directory
+cd $BUILD_DIR
+
+# Run cmake to configure the project and generate Makefiles
+cmake ../..
+
+# Compile the project
+echo "Building the project..."
+cmake --build .
+
+cd ../..
+
+# Optionally, run the compiled project (if the executable is known)
+bin/divider 2 2
+

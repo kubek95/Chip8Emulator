@@ -49,3 +49,4 @@ lib/*
 bin/*
 test/test_runner
 test/lib/googletest/*
+*.orig
