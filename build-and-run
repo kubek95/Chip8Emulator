@@ -25,5 +25,5 @@ cmake --build .
 cd ../..
 
 # Optionally, run the compiled project (if the executable is known)
-bin/divider 2 2
+build/run/src/emulator_imp
 

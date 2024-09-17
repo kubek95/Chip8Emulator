@@ -49,4 +49,5 @@ lib/*
 bin/*
 test/test_runner
 test/lib/googletest/*
+test/lib/chip8-test-suite/*
 *.orig
