@@ -10,7 +10,8 @@ set(SOURCE_FILES
 set(HEADER_FILES
     cpu.h
     memory.h
-    display.h)
+    display.h
+    opcode_utils.h)
 
 add_library(hardware SHARED STATIC ${SOURCE_FILES} ${HEADER_FILES})
 

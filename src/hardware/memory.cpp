@@ -1,14 +1,11 @@
 #include "memory.h"
 
-namespace emu {
-Ram::Ram() : memory_{std::make_unique<char[]>(4096)} {}
-
-void Ram::write(unsigned short address, char value) {
-  memory_[address] = value;
+void Memory::writeRomToMemory(const std::vector<std::uint8_t>& content)
+{
+    std::copy(content.begin(), content.end(), main_memory_.begin() + userland_offset_);
 }
 
-char Ram::read(unsigned short address) const {
-  return memory_[address];
+std::uint8_t Memory::getByte(std::uint16_t memory_location) const
+{
+    return main_memory_[memory_location];
 }
-
-}  // namespace emu

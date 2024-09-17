@@ -1,20 +1,24 @@
 #ifndef SRC_HARDWARE_MEMORY_H
 #define SRC_HARDWARE_MEMORY_H
 
-#include <memory>
+#include <array>
+#include <cstdint>
+#include <vector>
 
-namespace emu {
-class Ram {
- public:
-  Ram();
-  void write(unsigned short address, char value);
-  char read(unsigned short address) const; 
+class Memory
+{
+  public:
+    Memory() = default;
+    Memory(const Memory&) = delete;
+    Memory& operator=(const Memory&) = delete;
 
- private:
-  std::unique_ptr<char[]> memory_;
+    void writeRomToMemory(const std::vector<std::uint8_t>& content);
+    std::uint8_t getByte(std::uint16_t memory_location) const;
+
+  private:
+    static constexpr std::uint16_t memory_pool_{4092};
+    static constexpr std::uint16_t userland_offset_{512};
+    std::array<std::uint8_t, memory_pool_> main_memory_{};
 };
 
-class Stack {};
-}  // namespace emu
-
-#endif
+#endif  // SRC_HARDWARE_MEMORY_H

@@ -1,29 +1,16 @@
 #ifndef SRC_HARDWARE_CPU_H
 #define SRC_HARDWARE_CPU_H
 
-namespace emu {
-struct Cpu {
-  short program_counter;
-  short index_register;
-  char delay_timer;
-  char sound_timer;
-  char V0;
-  char V1;
-  char V2;
-  char V3;
-  char V4;
-  char V5;
-  char V6;
-  char V7;
-  char V8;
-  char V9;
-  char VA;
-  char VB;
-  char VC;
-  char VD;
-  char VE;
-  char VF;
+#include <cstdint>
+#include <array>
+
+struct Cpu
+{
+    std::uint16_t program_counter;
+    std::uint16_t index_register;
+    std::uint8_t delay_timer;
+    std::uint8_t sound_timer;
+    std::array<std::uint8_t, 16> registers;
 };
-}  // namespace emu
 
 #endif
